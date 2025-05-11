@@ -1,7 +1,8 @@
 [theme]
-base="light"
-primaryColor="#006fab"
-secondaryBackgroundColor="#006fab"
-textColor="#00010a"
+primaryColor="#F63366"
+backgroundColor="#191e24"
+secondaryBackgroundColor="black"
+textColor="#FFFFFF"
+font="sans serif"
 [server]
 enableStaticServing = true
