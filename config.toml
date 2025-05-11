@@ -1,0 +1,6 @@
+
+[central]
+base_url = "https://odk.arccsu.gouv.cd"
+username = "support@arccsu.gouv.cd"
+password = "@rc-csu10?Odk"
+default_project_id = 3
