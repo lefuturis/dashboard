@@ -49,8 +49,8 @@ def app():
         epvg_json = client.submissions.get_table(form_id="form_eva_epvg")
         df = pd.json_normalize(data=epvg_json["value"], sep="/")
         df.columns = [col.split("/")[-1] for col in df.columns]
-        df["pourcentage_score"] = (df["total_score"].astype(float) / 1228) * 100
-        df["Organisation et gestion"] = (df["score_organisation_et_gestion"].astype(float) / 18) * 100
+        df["pourcentage_score"] = (df["total_score"].astype(float) / 1230) * 100
+        df["Organisation et gestion"] = (df["score_organisation_et_gestion"].astype(float) / 20) * 100
         df["Gestion de la qualité"] = (df["score_gestion_de_la_qualite"].astype(float) / 96) * 100
         df["Gestion du risque qualité"] = (df["score_gestion_du_risque_qualite"].astype(float) / 15) * 100
         df["Revue de la direction"] = (df["score_revue_de_la_direction"].astype(float) / 25) * 100
