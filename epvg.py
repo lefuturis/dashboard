@@ -94,13 +94,11 @@ def app():
         # Filtrage du DataFrame
         df_selection = df.query(
             "province_etablissement == @province and ville_etablissement == @ville and nom_etablissement == @etablissement")
-        global_avg = df["pourcentage_score"].mean()
         current_avg = df_selection["pourcentage_score"]
-        delta = current_avg - global_avg
-        st.subheader("Score global de l’établissement")
+        st.subheader("Score de l’établissement")
         st.metric(
             label=f"Score de {etablissement} (%)",
-            value=f"{current_avg:,.2f}%",
+            value=f"{current_avg}%",
             help="Score de l’établissement sélectionné"
         )
         style_metric_cards(background_color="#393939",border_left_color="#686664",border_color="#000000",box_shadow="#F71938")
