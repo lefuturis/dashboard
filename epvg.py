@@ -98,7 +98,7 @@ def app():
         st.subheader("Score de l’établissement")
         st.metric(
             label=f"Score de {etablissement} (%)",
-            value=f"{current_avg}%",
+            value=f"{current_avg:,.2f}%",
             help="Score de l’établissement sélectionné"
         )
         style_metric_cards(background_color="#393939",border_left_color="#686664",border_color="#000000",box_shadow="#F71938")
