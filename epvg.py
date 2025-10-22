@@ -94,16 +94,19 @@ def app():
         # Filtrage du DataFrame
         df_selection = df.query(
             "province_etablissement == @province and ville_etablissement == @ville and nom_etablissement == @etablissement")
-        if df_selection.empty:
-           current_avg = 0
-        else:
-           current_avg = df_selection["pourcentage_score"]
-        st.subheader("Score de l’établissement")
-        st.metric(
-            label=f"Score de {etablissement} (%)",
-            value=f"{current_avg:,.2f}%",
-            help="Score de l’établissement sélectionné"
-        )
+        score_col = pd.to_numeric(df_selection["pourcentage_score"], errors="coerce") if not df_selection.empty else pd.Series(dtype=float)
+
+if df_selection.empty:
+    current_avg = 0.0
+else:
+    current_avg = float(score_col.mean(skipna=True))
+
+st.subheader("Score de l’établissement")
+st.metric(
+    label=f"Score de {etablissement} (%)",
+    value=f"{current_avg:,.2f}%",
+    help="Score de l’établissement sélectionné"
+)
         style_metric_cards(background_color="#393939",border_left_color="#686664",border_color="#000000",box_shadow="#F71938")
         with st.expander("⬇ COMMENTAIRES SUR LE RESRÉSULTAT ⬇",expanded=True):
                 st.write(f'''
