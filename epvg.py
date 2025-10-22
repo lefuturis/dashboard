@@ -94,8 +94,8 @@ def app():
         # Filtrage du DataFrame
         df_selection = df.query(
             "province_etablissement == @province and ville_etablissement == @ville and nom_etablissement == @etablissement")
-        global_avg = np.average(df["pourcentage_score"])
-        current_avg = np.average(df_selection["pourcentage_score"])
+        global_avg = df["pourcentage_score"].mean()
+        current_avg = df_selection["pourcentage_score"].mean()
         delta = current_avg - global_avg
         st.subheader("Score global de l’établissement")
         st.metric(
