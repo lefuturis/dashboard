@@ -94,7 +94,7 @@ def app():
         # Filtrage du DataFrame
         df_selection = df.query(
             "province_etablissement == @province and ville_etablissement == @ville and nom_etablissement == @etablissement")
-        current_avg = df_selection["pourcentage_score"]
+        current_avg = (df_selection["pourcentage_score"])*100
         st.subheader("Score de l’établissement")
         st.metric(
             label=f"Score de {etablissement} (%)",
