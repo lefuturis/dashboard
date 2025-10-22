@@ -94,14 +94,11 @@ def app():
         # Filtrage du DataFrame
         df_selection = df.query(
             "province_etablissement == @province and ville_etablissement == @ville and nom_etablissement == @etablissement")
-        score_col = pd.to_numeric(df_selection["pourcentage_score"], errors="coerce") if not df_selection.empty else pd.Series(dtype=float)
-
         if df_selection.empty:
-            current_avg = 0.0
+           current_avg = 0.0
         else:
-            current_avg = float(score_col)
-        
-        st.subheader("Score de l’établissement")
+            score_col = pd.to_numeric(df_selection["pourcentage_score"], errors="coerce")
+            current_avg = score_col.iloc[0]
         st.metric(
             label=f"Score de {etablissement} (%)",
             value=f"{current_avg:,.2f}%",
