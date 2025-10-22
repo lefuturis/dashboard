@@ -101,9 +101,7 @@ def app():
         st.metric(
             label=f"Score de {etablissement} (%)",
             value=f"{current_avg:,.2f}%",
-            delta=f"{delta:+.2f}%",
-            help="Comparé à la moyenne",
-            delta_color="normal"  # normal si le sous-groupe est au-dessus
+            help="Score de l’établissement sélectionné"
         )
         style_metric_cards(background_color="#393939",border_left_color="#686664",border_color="#000000",box_shadow="#F71938")
         with st.expander("⬇ COMMENTAIRES SUR LE RESRÉSULTAT ⬇",expanded=True):
